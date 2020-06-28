@@ -1,0 +1,10 @@
+<div class="field">
+  <%= f.attribute_fields do |a| %>
+    <%= a.attribute_select associations: [:users] %>
+  <% end %>
+  <%= f.value_fields do |v| %>
+    <%= v.text_field :value %>
+  <% end %>
+  <%= f.predicate_select only: [:eq, :start, :end, :cont, :not_cont], compounds: false %>
+  <%= link_to "削除", "#", class: "remove_fields" %>
+</div>

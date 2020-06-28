@@ -1,0 +1,37 @@
+<h1><%= link_to "ポケモントレーナー　一覧", users_path %></h1>
+<%= link_to "ポケモントレーナーを作成する", new_user_path %>
+<p><%= link_to "ポケモン一覧", pokemons_path %></p>
+
+<%= search_form_for @search do |f| %>
+  <%= f.condition_fields do |c| %>
+    <%= render "condition_fields", f: c %>
+  <% end %>
+  <p><%= link_to_add_fields "追加", f, :condition %></p>
+  </div>
+  <div><%= f.submit %><small>数値の場合は半角数字で入力してください</small></div>
+<% end %>
+
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th><%= sort_link @search, :name, "名前" %></th>
+    <th><%= sort_link @search, :age, "年齢" %></th>
+    <th><%= sort_link @search, :address, "住所" %></th>
+    <th>操作</th>
+  </tr>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= link_to user.name, user_path(user.id) %></td>
+    <td><%= user.age %></td>
+    <td><%= user.address %></td>
+    <td><%= link_to "編集", edit_user_path(user.id) %></td>
+    <td><%= link_to "削除", user_path(user.id), method: :delete, data: { confirm: "削除しますか？" } %></td>
+  </tr>
+  <% end %>
+</table>
+
+
+
+

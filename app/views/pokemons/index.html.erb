@@ -1,0 +1,25 @@
+<h1><%= link_to "ポケモン一覧", pokemons_path %></h1>
+<%= link_to "ポケモントレーナー一覧", users_path %>
+
+<%= search_form_for @search do |f| %>
+  <%= f.condition_fields do |c| %>
+    <%= render "condition_fields", f: c %>
+  <% end %>
+  <p><%= link_to_add_fields "追加", f, :condition %></p>
+  </div>
+  <div><%= f.submit %></div>
+<% end %>
+
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th><%= sort_link @search, :name, "名前" %></th>
+  </tr>
+  <% @pokemons.each do |pokemon| %>
+  <tr>
+    <td><%= pokemon.id %></td>
+    <td><%= link_to pokemon.name, pokemon_path(pokemon.id) %></td>
+  </tr>
+  <% end %>
+</table>

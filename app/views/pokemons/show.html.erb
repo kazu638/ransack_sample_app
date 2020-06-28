@@ -1,0 +1,28 @@
+<h1>ポケモン詳細</h1>
+
+<h2><%= @pokemon.name %></h2>
+
+<h2>覚えている技</h2>
+<% unless @pokemon.abilities.empty? %>
+  <ul>
+    <% @pokemon.abilities.each do |ability| %>
+      <li><%= ability.ability %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>技を覚えていません。</p>
+<% end %>
+
+<h2><%= @pokemon.name %>を使用しているポケモントレーナー</h2>
+<% unless @pokemon.users.empty? %>
+  <ol>
+    <% @pokemon.users.each do |user| %>
+      <li><%= link_to user.name, user_path(user.id) %></li>
+    <% end %>
+  </ol>
+<% else %>
+  <p>いません。</p>
+<% end %>
+
+<%= link_to "戻る", :back %>
+<%= link_to "トップ画面", users_path %>

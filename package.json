@@ -1,0 +1,7 @@
+{
+  "name": "ransack_app",
+  "private": true,
+  "dependencies": {
+    "bootstrap-honoka": "^4.3.1"
+  }
+}

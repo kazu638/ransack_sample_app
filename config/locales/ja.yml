@@ -1,0 +1,25 @@
+ja:
+  ransack:
+    predicates:
+      eq: 完全一致
+      lteq: 以下（数値）
+      gteq: 以上（数値）
+      cont: を含む
+      not_cont: を含まない
+      start: で始まる
+      end: で終わる
+  activerecord:
+    models:
+      user: ユーザー
+      pokemon: ポケモン
+    attributes:
+      user:
+        name: 名前（トレーナー）
+        age: 年齢
+        address: 住所
+        created_at: 作成日時
+        updated_at: 更新日時
+      pokemon:
+        name: 名前（ポケモン）
+        created_at: 作成日時
+        updated_at: 更新日時

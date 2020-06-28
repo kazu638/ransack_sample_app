@@ -1,0 +1,17 @@
+<h1>詳細</h1>
+<p>
+  <%= @user.name %>
+  <%= @user.age %>才
+  <%= @user.address %>
+</p>
+<p>
+<ul>
+  <% @user.pokemons.each do |pokemon| %>
+    <li><%= link_to pokemon.name, pokemon_path(pokemon.id) %></li>
+  <% end %>
+</ul>
+</p>
+
+<%= link_to "戻る", :back %>
+<%= link_to "ポケモントレーナー一覧", users_path %>
+<%= link_to "ポケモン一覧", pokemons_path %>
