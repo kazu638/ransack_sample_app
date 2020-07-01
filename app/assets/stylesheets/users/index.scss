@@ -1,0 +1,48 @@
+.form-wrapper{
+  background-color: white;
+  margin: 30px auto;
+  padding: 50px;
+  width: 700px;
+  border: solid 2px rgb(76, 172, 76);
+  border-radius: 25px;
+  .search-wrapper{
+    width: 600px;
+    margin: 0 auto;
+    position: relative;
+    small{
+      font-size: 8px;
+      position: absolute;
+      left: 30%;
+      top: -20px;
+    }
+    .add-fields-wrapper{
+      position: relative;
+      .add-fields{
+        position: absolute;
+        left: 15px;
+      }
+    }
+    .search-button{
+      text-align: center;
+    }
+  }
+}
+.pagination{
+  margin: 20px 0;
+  justify-content: center;
+  li a{
+    border: none;
+  }
+  .active a{
+    background-color: rgb(76, 172, 76) !important;
+    border-radius: 50% !important;
+  }
+}
+
+.table{
+  width: 800px;
+  margin: 30px auto;
+  .table-th-operation{
+    text-align: center;
+  }
+}

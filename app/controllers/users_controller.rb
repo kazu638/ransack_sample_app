@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @search = User.ransack(params[:q])
-    @users = @search.result.order(:id)
+    @users = @search.result.includes(:pokemons).order(:id).page(params[:page])
     @search.build_condition if @search.conditions.empty?
   end
 
@@ -19,6 +19,8 @@ class UsersController < ApplicationController
       flash.now[:alert] = "トレーナーの作成に失敗しました！"
       render :new
     end
+    rescue ActiveRecord::NotNullViolation
+      redirect_to new_user_path, alert: "トレーナーの作成に失敗しました！"
   end
 
   def show

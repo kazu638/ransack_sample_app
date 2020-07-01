@@ -1,24 +1,31 @@
-<h1><%= link_to "ポケモントレーナー　一覧", users_path %></h1>
-<%= link_to "ポケモントレーナーを作成する", new_user_path %>
-<p><%= link_to "ポケモン一覧", pokemons_path %></p>
+<h1>ポケモントレーナー一覧</h1>
 
-<%= search_form_for @search do |f| %>
-  <%= f.condition_fields do |c| %>
-    <%= render "condition_fields", f: c %>
-  <% end %>
-  <p><%= link_to_add_fields "追加", f, :condition %></p>
+<div class="form-wrapper">
+  <div class="search-wrapper">
+    <small>年齢検索の場合は半角数字で入力してください</small>
+    <%= search_form_for @search do |f|  %>
+      <%= f.condition_fields do |c| %>
+        <%= render "condition_fields",  f: c %>
+      <% end %>
+      <p class="add-fields-wrapper">
+        <%= link_to_add_fields "追加 ", f, :condition %>
+      </p>
+      <div class="search-button"><%= f.submit %></div>
+    <% end %>
   </div>
-  <div><%= f.submit %><small>数値の場合は半角数字で入力してください</small></div>
-<% end %>
+</div>
+
+<%= paginate @users %>
 
 
-<table>
+<table class="table table-bordered">
   <tr>
     <th>ID</th>
     <th><%= sort_link @search, :name, "名前" %></th>
     <th><%= sort_link @search, :age, "年齢" %></th>
     <th><%= sort_link @search, :address, "住所" %></th>
-    <th>操作</th>
+    <th>最初のポケモン</th>
+    <th colspan="2" class="table-th-operation">操作</th>
   </tr>
   <% @users.each do |user| %>
   <tr>
@@ -26,11 +33,14 @@
     <td><%= link_to user.name, user_path(user.id) %></td>
     <td><%= user.age %></td>
     <td><%= user.address %></td>
+    <td><%= user.pokemons[0].present? ? user.pokemons[0].name : "なし" %></td>
     <td><%= link_to "編集", edit_user_path(user.id) %></td>
     <td><%= link_to "削除", user_path(user.id), method: :delete, data: { confirm: "削除しますか？" } %></td>
   </tr>
   <% end %>
 </table>
+
+<%= paginate @users %>
 
 
 

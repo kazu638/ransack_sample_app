@@ -1,0 +1,18 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light max-width">
+    <%= link_to "Ransack Sample App", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler sticky" type="button" data-toggle="collapse"   data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"  aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav show-list">
+        <li class="nav-item">
+          <%=link_to_unless @users, @users ? '<span class="nav-link">ポケモントレーナー一覧</span>'.html_safe : "ポケモントレーナー一覧", root_path, class: "nav-link hover-color" %>
+          <%=link_to_unless @user && controller.action_name == "new" , @user &&  controller.action_name == "new" ? '<span class="nav-link">ポケモントレーナーを作成する</span>'.html_safe : "ポケモントレーナーを作成する", new_user_path, class: "nav-link hover-color" %>
+          <%=link_to_unless @pokemons, @pokemons ? '<span class="nav-link">ポケモン一覧</span>'.html_safe : "ポケモン一覧", pokemons_path, class: "nav-link hover-color" %>
+        </li>
+
+    </div>
+  </nav>
+</header>

@@ -1,28 +1,40 @@
-<h1>ポケモン詳細</h1>
+<h1><%= @pokemon.name %>の詳細</h1>
 
-<h2><%= @pokemon.name %></h2>
+<div class="show-wrapper">
 
-<h2>覚えている技</h2>
-<% unless @pokemon.abilities.empty? %>
-  <ul>
-    <% @pokemon.abilities.each do |ability| %>
-      <li><%= ability.ability %></li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>技を覚えていません。</p>
-<% end %>
+  <div class="show-left">
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        覚えている技
+      </div>
+      <ul class="list-group list-group-flush">
+        <% if @pokemon.abilities.present? %>
+          <% @pokemon.abilities.each do |ability| %>
+            <li class="list-group-item"><%= ability.ability %></li>
+          <% end %>
+        <% else %>
+          <li class="list-group-item">なし</li>
+        <% end %>
+      </ul>
+    </div>
+    <%= link_to "&laquo; 戻る".html_safe, :back, class: "back" %>
+  </div>
 
-<h2><%= @pokemon.name %>を使用しているポケモントレーナー</h2>
-<% unless @pokemon.users.empty? %>
-  <ol>
-    <% @pokemon.users.each do |user| %>
-      <li><%= link_to user.name, user_path(user.id) %></li>
-    <% end %>
-  </ol>
-<% else %>
-  <p>いません。</p>
-<% end %>
+  <div class="show-right">
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        使用しているトレーナー
+      </div>
+      <ul class="list-group list-group-flush">
+        <% if @pokemon.users.present? %>
+          <% @pokemon.users.each do |user| %>
+            <li class="list-group-item"><%= link_to user.name, user_path(user.id) %></li>
+          <% end %>
+        <% else %>
+          <li class="list-group-item">なし</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 
-<%= link_to "戻る", :back %>
-<%= link_to "トップ画面", users_path %>
+</div>

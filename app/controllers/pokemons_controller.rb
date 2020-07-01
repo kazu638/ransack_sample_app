@@ -1,7 +1,7 @@
 class PokemonsController < ApplicationController
   def index
     @search = Pokemon.ransack(params[:q])
-    @pokemons = @search.result
+    @pokemons = @search.result.page(params[:page])
     @search.build_condition if @search.conditions.empty?
   end
 

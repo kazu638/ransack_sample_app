@@ -1,17 +1,27 @@
 <h1>詳細</h1>
-<p>
-  <%= @user.name %>
-  <%= @user.age %>才
-  <%= @user.address %>
-</p>
-<p>
-<ul>
-  <% @user.pokemons.each do |pokemon| %>
-    <li><%= link_to pokemon.name, pokemon_path(pokemon.id) %></li>
-  <% end %>
-</ul>
-</p>
 
-<%= link_to "戻る", :back %>
-<%= link_to "ポケモントレーナー一覧", users_path %>
-<%= link_to "ポケモン一覧", pokemons_path %>
+<div class="show-wrapper">
+  <div class="show-left">
+    <p>名前：<%= @user.name %></p>
+    <p>年齢：<%= @user.age %>才</p>
+    <p>住所：<%= @user.address %></p>
+    <p><%= link_to "&laquo; 戻る".html_safe, :back, class: "back" %></p>
+  </div>
+
+  <div class="show-right">
+    <div class="card" style="width: 18rem;">
+      <div class="card-header">
+        所持ポケモン
+      </div>
+      <ul class="list-group list-group-flush">
+        <% if @user.pokemons.present? %>
+          <% @user.pokemons.each do |pokemon| %>
+            <li class="list-group-item"><%= link_to pokemon.name, pokemon_path(pokemon.id) %></li>
+          <% end %>
+        <% else %>
+          <li class="list-group-item">なし</li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

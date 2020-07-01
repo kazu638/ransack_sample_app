@@ -1,0 +1,25 @@
+.nav-link{
+  color: black !important;
+}
+.hover-color:focus,.hover-color:hover{
+  color: #FFFFDC !important;
+}
+
+@media(max-width: 991px){
+  .sticky{
+    position: sticky;
+    right: 30px;
+  }
+}
+
+@media(min-width: 992px){
+  .collapse{
+    justify-content: flex-end;
+    .show-list {
+      .nav-item{
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+  }
+}

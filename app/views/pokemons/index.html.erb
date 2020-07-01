@@ -1,17 +1,23 @@
-<h1><%= link_to "ポケモン一覧", pokemons_path %></h1>
-<%= link_to "ポケモントレーナー一覧", users_path %>
+<h1>ポケモン一覧</h1>
 
-<%= search_form_for @search do |f| %>
-  <%= f.condition_fields do |c| %>
-    <%= render "condition_fields", f: c %>
-  <% end %>
-  <p><%= link_to_add_fields "追加", f, :condition %></p>
+<div class="form-wrapper">
+  <div class="search-wrapper">
+    <small>年齢検索の場合は半角数字で入力してください</small>
+    <%= search_form_for @search do |f|  %>
+      <%= f.condition_fields do |c| %>
+        <%= render "condition_fields",  f: c %>
+      <% end %>
+      <p class="add-fields-wrapper">
+        <%= link_to_add_fields "追加 ", f, :condition %>
+      </p>
+      <div class="search-button"><%= f.submit %></div>
+    <% end %>
   </div>
-  <div><%= f.submit %></div>
-<% end %>
+</div>
 
+<%= paginate @pokemons %>
 
-<table>
+<table class="table table-bordered">
   <tr>
     <th>ID</th>
     <th><%= sort_link @search, :name, "名前" %></th>
@@ -23,3 +29,5 @@
   </tr>
   <% end %>
 </table>
+
+<%= paginate @pokemons %>

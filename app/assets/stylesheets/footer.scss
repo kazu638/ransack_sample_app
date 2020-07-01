@@ -1,0 +1,15 @@
+$footer-height: 56px;
+
+footer{
+  margin-top: auto;
+}
+
+.footer-height{
+  height: $footer-height;
+}
+
+.footer-height p{
+  text-align: center;
+  line-height: $footer-height;
+  margin-bottom: 0;
+}

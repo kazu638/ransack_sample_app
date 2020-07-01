@@ -4,13 +4,20 @@
     <title>RansackApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render "layouts/flash"%>
-    <%= yield %>
+    <div class="site-wrapper">
+      <%= render "layouts/header"%>
+      <%= render "layouts/flash"%>
+      <div class="max-width">
+        <%= yield %>
+      </div>
+      <%= render "layouts/footer"%>
+    </div>
   </body>
 </html>

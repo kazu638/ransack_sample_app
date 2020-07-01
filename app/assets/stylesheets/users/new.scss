@@ -1,0 +1,21 @@
+.user-wrapper{
+  width: 800px;
+  margin: 0 auto;
+  position: relative;
+  .input-group{
+    width: 600px;
+    margin: auto;
+    .input-group-text{
+      color: black;
+      background-color: rgb(122, 201, 122)
+    }
+  }
+  .btn-wrapper{
+    text-align: center;
+  }
+  .back{
+    position: absolute;
+    left: 13%;
+  }
+}
+
