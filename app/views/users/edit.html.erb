@@ -1,6 +1,6 @@
 <h1>ポケモントレーナー編集画面</h1>
 
-<div class="user-wrapper">
+<div class="create-wrapper">
   <%= form_with model: @user do |f| %>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
@@ -23,9 +23,18 @@
       <%= f.text_field :address, class: "form-control"%>
     </div>
 
+    <%= f.fields_for :user_pokemons do |p| %>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <%= p.label :name, "名前", class: "input-group-text" %>
+        </div>
+        <%= p.collection_select :pokemon_id, Pokemon.all, :id, :name, { include_blank: true, class: "form-control" }%>
+      </div>
+    <% end %>
+
     <div class="btn-wrapper">
       <%= f.submit "更新", class: "btn btn-success"%>
     </div>
   <% end %>
-  <%= link_to "&laquo; 戻る".html_safe, :back, class: "back" %>
+  <%= link_to "&laquo; 戻る".html_safe, users_path, class: "back" %>
 </div>

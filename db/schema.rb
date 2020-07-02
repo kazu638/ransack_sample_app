@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_25_102206) do
+ActiveRecord::Schema.define(version: 2020_07_02_101230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_102206) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["pokemon_id"], name: "index_user_pokemons_on_pokemon_id"
-    t.index ["user_id", "pokemon_id"], name: "index_user_pokemons_on_user_id_and_pokemon_id", unique: true
+    t.index ["user_id", "pokemon_id"], name: "index_user_pokemons_on_user_id_and_pokemon_id"
     t.index ["user_id"], name: "index_user_pokemons_on_user_id"
   end
 

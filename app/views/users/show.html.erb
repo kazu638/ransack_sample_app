@@ -5,7 +5,7 @@
     <p>名前：<%= @user.name %></p>
     <p>年齢：<%= @user.age %>才</p>
     <p>住所：<%= @user.address %></p>
-    <p><%= link_to "&laquo; 戻る".html_safe, :back, class: "back" %></p>
+    <p><%= link_to "&laquo; 戻る".html_safe, users_path, class: "back" %></p>
   </div>
 
   <div class="show-right">

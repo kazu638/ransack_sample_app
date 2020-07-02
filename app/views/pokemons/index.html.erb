@@ -21,11 +21,14 @@
   <tr>
     <th>ID</th>
     <th><%= sort_link @search, :name, "名前" %></th>
+    <th colspan="2" class="table-th-operation">操作</th>
   </tr>
   <% @pokemons.each do |pokemon| %>
   <tr>
     <td><%= pokemon.id %></td>
     <td><%= link_to pokemon.name, pokemon_path(pokemon.id) %></td>
+    <td class="table-td-operation"><%= link_to "編集", edit_pokemon_path(pokemon.id) %> </td>
+    <td class="table-td-operation"><%= link_to "削除", pokemon_path(pokemon.id), method: :delete, data: { confirm: "削除しますか？" } %> </td>
   </tr>
   <% end %>
 </table>

@@ -1,24 +1,31 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+備忘録
 
-Things you may want to cover:
+## 実装
 
-* Ruby version
+* ransack
+検索フォームの追加・削除はrailscastの動画を参考にした。
 
-* System dependencies
+* bootstrap
 
-* Configuration
+* faker
+seed.rbでポケモンを作成。日本語化。
 
-* Database creation
+```
+rails db:seed
+```
 
-* Database initialization
+* kaminari
+ページネーションの日本語化、bootstrap化。
 
-* How to run the test suite
+* association
+多対多の関係でネストしたフォームはトレーナーとポケモンの不完全なものを作成した。
+一から登録や、登録したポケモンを違うポケモンに変更することはできるが、そのポケモンを削除する機能はつけていない。
+空白を選択して更新すると削除する又は登録しない仕様にしたかったが、実装できなかった。
+最初からフォームがある状態ではなく、必要に応じて"フォームを追加・削除する機能があれば実現できそうな気がする。
+また、fields_forを使用した際のパラメーターの挙動や、作成されるフォームの数がよく分からない。
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## その他
+途中からscssを修正してもブラウザに反映されなくなったので、`config/environmants/development.rb`に`config.assets.digest = false`を追記したら直った。
+　

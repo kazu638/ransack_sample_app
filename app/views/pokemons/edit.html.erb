@@ -1,7 +1,7 @@
-<h1>ポケモン新規作成</h1>
+<h1>ポケモン編集画面</h1>
 
 <div class="create-wrapper">
-  <%= form_with model: @pokemon, local: true do |f| %>
+  <%= form_with model: @pokemon do |f| %>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <%= f.label :name, "名前", class: "input-group-text" %>
@@ -9,8 +9,9 @@
       <%= f.text_field :name, class: "form-control" %>
     </div>
 
+
     <div class="btn-wrapper">
-      <%= f.submit "作成", class: "btn btn-success"%>
+      <%= f.submit "更新", class: "btn btn-success"%>
     </div>
   <% end %>
   <%= link_to "&laquo; 戻る".html_safe, :back, class: "back" %>

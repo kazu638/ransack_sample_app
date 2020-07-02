@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:edit ]
-
   def index
     @search = User.ransack(params[:q])
     @users = @search.result.includes(:pokemons).order(:id).page(params[:page])
@@ -28,18 +26,24 @@ class UsersController < ApplicationController
   end
 
   def edit
-    set_user
+    @user = User.includes(:pokemons).find(params[:id])
+    case pokemons_size = @user.pokemons.size
+    when 0..5
+      (6 - pokemons_size).times do
+        @user.user_pokemons.build
+      end
+    end
   end
 
   def update
     set_user
-    if @user.update(user_params)
+    if @user.update!(user_pokemon_params)
       redirect_to users_path, notice: "更新に成功しました！"
     else
       flash.now[:alert] = "更新に失敗しました！"
       render :edit
     end
-    rescue ActiveRecord::NotNullViolation
+    rescue ActiveRecord::NotNullViolation,ActiveRecord::RecordInvalid
       redirect_to edit_user_path(@user.id), alert: "更新に失敗しました！"
   end
 
@@ -56,6 +60,10 @@ class UsersController < ApplicationController
   private
     def user_params
       params.require(:user).permit(:name, :age, :address)
+    end
+
+    def user_pokemon_params
+      params.require(:user).permit(:name, :age, :address, user_pokemons_attributes: [:id, :pokemon_id])
     end
 
     def set_user
